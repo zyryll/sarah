@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Love Letter</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffe6f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: cursive, sans-serif;
+    overflow: hidden;
+  }
+
+  /* Container for heart and photo to animate together */
+  #heartPhotoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 2s ease;
+  }
+
+  /* Heart style */
+  #heart {
+    font-size: 8rem;
+    color: red;
+    cursor: pointer;
+    margin-bottom: 10px;
+    z-index: 2;
+  }
+
+  /* Instruction text below the heart */
+  #instruction {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #333;
+  }
+
+  /* Photo styling */
+  #photo {
+    width: 400px; /* wallet size */
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 10px auto;
+    transition: opacity 1s ease, transform 1s ease;
+  }
+
+  /* Container for the initial page */
+  #initialContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Letter container styles (hidden initially) */
+  #letterContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff0f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    font-size: 1.2rem;
+    line-height: 1.5;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+
+  #letterContainer.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  /* Animate the heart downward and shrink */
+  @keyframes rollDown {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(300px) scale(0.5); opacity: 0; }
+  }
+
+  /* Message after showing letter */
+  #message {
+    display: none;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    text-align: left;
+    color: #cc3366;
+  }
+</style>
+</head>
+<body>
+
+<div id="initialContainer">
+  <!-- Wrap heart, instruction, and photo in a container for animation -->
+  <div id="heartPhotoContainer">
+    <!-- Heart Icon -->
+    <div id="heart" title="Click to reveal love message">❤️</div>
+    <!-- Instruction Text -->
+    <div id="instruction">Click the heart!</div>
+    <!-- Photo below the instruction -->
+    <img id="photo" src="C:\Users\oquen\Downloads\love\lovey.jpg" alt="Our Wallet Photo" />
+  </div>
+</div>
+
+<!-- Your Love Letter (hidden initially) -->
+<div id="letterContainer">
+  <p>
+    <span style="color:hwb(336 24% 0%);">Happy National Girlfriend’s Day, Sarah! 💕</span><br><br>
+    I just want you to know how deeply thankful I am for you — for all the laughs we’ve shared, the meals we’ve enjoyed together, and the way you make even the simplest days feel so special. Thank you for making me one of the happiest girls in the world. You make me feel whole, and I can’t wait to experience and share even more of life with you. Because of you, I wake up every day looking forward to all the beautiful things we can achieve — both individually and together.<br><br>
+    I know I haven’t been the perfect girlfriend, and I’m sorry for the times I fell short. But please know I’m doing my very best to make it up to you. This is the first time I’ve ever loved someone this genuinely and purely, and I’m proud to say that my whole heart belongs to the right person — you. We’ve had our share of arguments, but I hope we can keep growing, learning, and being patient with each other. Right or wrong, what matters most is that we face everything together.<br><br>
+    You’re my safe place, my biggest cheerleader, and my favorite person all in one. I’m so lucky to have you, Sarah, and I can’t wait for all the little and big moments still ahead of us. I love you more than words will ever be able to explain. <br><br>
+    <span style="color:hwb(336 24% 0%);">Love, Kaka ❤️</span>
+  </p>
+  <div id="message">Forever yours ❤️</div>
+</div>
+
+<script>
+  const heart = document.getElementById('heart');
+  const initialContainer = document.getElementById('initialContainer');
+  const heartPhotoContainer = document.getElementById('heartPhotoContainer');
+  const letterContainer = document.getElementById('letterContainer');
+
+  heart.addEventListener('click', () => {
+    // Animate the entire container (heart + photo)
+    heartPhotoContainer.style.transition = 'transform 2s ease';
+    heartPhotoContainer.style.transform = 'translateY(300px) scale(0.5)';
+    
+    setTimeout(() => {
+      // Hide the initial container
+      initialContainer.style.display = 'none';
+
+      // Show the love letter
+      letterContainer.classList.add('show');
+    }, 2000);
+  });
+</script>
+
+</body>
+</html>
